@@ -1,5 +1,5 @@
 <?php require_once 'php/init.php'; 
-
+require_once 'php/data.php';
 // print '<pre>';
 // print_r($categoria);
 // print_r($produtos_base);
@@ -21,7 +21,7 @@ if (!currentUrl.includes(newWord)) {
     // Updates address bar without reloading
     window.history.replaceState({ path: newUrl }, '', newUrl);
     location.reload();
-}
+};  
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,41 +31,52 @@ if (!currentUrl.includes(newWord)) {
 </head>
 <body>
     <?php require_once 'partial/header.php';?>
-    <article>
-        <div class="subtitulo">
-                <p class="paragrafo"><?php echo $title ?>  </p>
-                <div class="col-apresent">
-                    <div class="botao-1">
-                        <a href="Contato.php" >ENTRE EM CONTATO</a>
-                    </div>
-                </div>
-            </div>
-        </article>
+    <div class="div-consulta">
         <?php 
         print ' <p class="paragrafo"> Catálogo </p>
         <ul class="col-apresent">';
         print ' <li>
-                        <a class="button" href="Produtos.php?categoria=" >Todos Produtos</a>
+                        <a class="button" href="consulta.php?categoria=" >Todos Produtos</a>
                 </li>';
         foreach($categoria as $kcat => $nome ) {
             echo '<li>
-                        <a class="button" href="produtos.php?categoria='.$kcat.'">'.$nome.'</a>
+                        <a class="button" href="consulta.php?categoria='.$kcat.'">'.$nome.'</a>
                 </li>';
         }
         echo '</ul>';
 ?>
-
+        
         <p class="paragrafo"> Estoque, e Muito Mais!! </p>
             <?php
             echo '<div class="grid2">';
             foreach($_SESSION['produtos'] as $produto){
                 if($_GET['categoria'] == '' || $produto['categoria'] == $_GET['categoria']  ){
-                echo '<div class="item"><img src="'.$produto['imagem'].'" class="img" id="produtos"><p class="legend" >'.$produto['nome'].' <br> Preço: <R1>'.$produto['preco'].' </R1> Categoria: '.$produto['categoria'].' <button class="button"onclick=pagina('.$produto['id'].')>Comprar</button></p></div>';
+                echo '<div class="item" id="1" ><img src="'.$produto['imagem'].'" class="img" id="produtos"><p class="legend" >'.$produto['nome'].' <br> Preço: <R1>'.$produto['preco'].' </R1> <br> Categoria: '.$produto['categoria'].'<br> Quantidade em estoque: '.$produto['Qtd'].' <button class="button"onclick=pagina('.$produto['id'].')>Ajustar Qntd</button></p></div>';
             }
             };
             
-            echo '</div>';
+            echo '</div></div>';
             ?>
-    <script src="Script.js"></script>
+            
+            <div class="div-consulta2">
+            <?php
+            echo '<div class="grid3">';
+            foreach($categoria as $kcat => $nome ) {
+            if($_GET['categoria'] == '' || $nome == $_GET['categoria']  ){
+            echo '<div>Categoria: '.$nome.'<br> Quantidade em estoque: '.  $produto['Qtd'] .'</div>';}
+        };
+            ?>  
+            </div>
+    <script src="Script/Script.js">
+        function Warning(){
+    const Alert = document.getElementById('test')
+    const color = document.getElementById('1')
+    if(Alert <= 10){
+        color.style.color = 'red'
+    }
+    setInterval(Warning(),1000);
+}
+
+    </script>
 </body>
 </html>

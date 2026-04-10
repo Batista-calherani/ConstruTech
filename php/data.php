@@ -1,10 +1,17 @@
 <?php
 $title = 'Gerenciamento';
+$logo = 'img/logo.png';
 
 $categoria = [
     'Bruto' => 'Bruto',
     'Ferramentas' => 'Ferramentas',
     'Acabamento' => 'Acabamento'
+];
+
+$categoriaTotal = [
+    'Bruto' => 0,
+    'Ferramentas' => 0,
+    'Acabamento' => 0
 ];
 
 $Produtos = [
@@ -21,7 +28,7 @@ $Produtos = [
         'id' => 2,
         'nome' => 'Martelo',
         'preco' => '25.00',
-        'categoria' => 'Feramentas',
+        'categoria' => 'Ferramentas',
         'descricao_curta' => 'Um martelo.',
         'imagem' => 'img/martelo.webp',
         'Qtd' => 0
@@ -39,4 +46,5 @@ $Produtos = [
 
 $users = ['Gustavo','Matheus'];
 $pass = ['54321','40028'];
-?>
+
+

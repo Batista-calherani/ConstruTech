@@ -1,5 +1,5 @@
 <div class="leftbar">
-        <img src="img/logo.png"/>
+        <img src="<?php echo $logo;  ?>" class="logo"/>
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="cadastra_produto.php">Gerenciar Item</a></li>

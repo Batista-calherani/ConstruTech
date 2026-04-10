@@ -39,7 +39,7 @@
                         </select>
                         <input type="text" placeholder="descrição curta" name="descricao_curta" required autocomplete="off" id="descricao_curta">
                         <input type="text" placeholder="Link para imagem" name="image" required autocomplete="off" id="preco">
-                        <input type="number" placeholder="Quantidade" name="Qntd" required id="Qntd"
+                        <input type="number" placeholder="Quantidade" name="Qntd" required id="Qntd">
                         <br>
                         <button id="btn" type="submit" >Send</button>
                         <p id="p">Preencha os campos do formulário</p>

@@ -19,3 +19,4 @@ if(!isset($_SESSION['pass'])) {
 
 $complete = array_combine($_SESSION['users'],$_SESSION['pass']);
 $try = json_encode($complete);
+$total = array_sum(array_column($_SESSION['produtos'] ,'Qtd',));
