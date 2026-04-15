@@ -1,5 +1,9 @@
 <!DOCTYPE html> <?php include  'php/init.php';
 $id = isset($_GET['id']) ? (int) $_GET['id']: 0;
+if ($_SESSION['access'] == false) {
+    header("Location: Login.php");
+    exit();
+}
 ?>
 <html lang="pt-br">
 <head>
@@ -26,7 +30,30 @@ $id = isset($_GET['id']) ? (int) $_GET['id']: 0;
 ?>
     </div>
 </main>
-<div class="div-consulta2"> <div class="text"> <p> Adicionar mais ao estoque </p> </div> </div>
+<div class="div-consulta2"> 
+    <div class="text"> <p> Adicionar mais ao estoque </p> </div>
+    <form action="" method="post" class="form-consulta2">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <input type="number" name="quantidade" placeholder="Quantidade a adicionar" required>
+        <button type="submit">Adicionar</button>
+    </form>
+<?php 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
+
+    $id = $_POST['id'];
+    $quantidade = $_POST['quantidade'];
+
+    foreach($_SESSION['produtos'] as &$produto) {
+        if ($produto['id'] == $id) {
+            $produto['Qtd'] += $quantidade;
+            break; // Para o loop imediatamente após encontrar
+        }
+    }
+    unset($produto); // Desreferencia a variável para evitar efeitos colaterais
+    Header('Location: detalhes.php?id='.$id); // Redireciona para a mesma página para atualizar os dados
+}
+?>
+ </div>
 <script src="Script/Script.js" >  </script>
 </body>
 </html>

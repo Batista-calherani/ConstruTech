@@ -1,5 +1,6 @@
 <?php include  'php/init.php'; 
 include 'php/data.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,7 @@ include 'php/data.php';
     </head>
     <body class="body_login">
         <?php require_once 'partial/header.php'; ?>
+    <div class="center">
         <div class="big_box2">
         <h1>Bem-Vindo ao ConstruTech </h1> </div> 
         <p id="textoL" class="paragrafo1">Faça o login para acessar</p>
@@ -20,7 +22,9 @@ include 'php/data.php';
             <input style="text-align: center; border: 5px solid silver; border-radius: 200px ;" type="password" placeholder="Password" name="password" id="pass" maxlength="8" method="POST" /> <br>
             </form>
             <?php
-            echo '<button type="submit" class="button1" onclick="Confirmation()">Enter</button>';?>
+            echo '<button type="submit" class="button1" onclick="Confirmation()">Enter</button>';
+            ?>
+    </div>
     <script>
     function Confirmation(){
     const pass = document.getElementById("pass").value
@@ -39,7 +43,10 @@ include 'php/data.php';
         ale.style.fontWeight = 600;
     }
     else if(thing[user]&& thing [user] === pass ) {
-        window.location.href = "index.php";
+        ale.innerText = "Welcome " + user + "!";
+        ale.style.color = "green";
+        ale.style.fontWeight = 600;
+        window.location.href = "index.php?access=true";
     }
     else {
         ale.innerText = "Wrong Password or user!";
@@ -49,5 +56,6 @@ include 'php/data.php';
 
 }
 </script>
+
     </body>
 </html>

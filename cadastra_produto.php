@@ -1,4 +1,8 @@
 <?php require_once 'php/init.php';
+if ($_SESSION['access'] == false) {
+    header("Location: Login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -53,6 +57,7 @@
 
 
 <?php require_once 'partial/footer.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
 
     $ids = array_column($_SESSION['produtos'],'id');
@@ -70,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
 ];
 };
 ?>
+
     <script src="Script/Script.js"></script>
 </body>
 </html>

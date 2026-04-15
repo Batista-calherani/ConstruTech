@@ -4,7 +4,10 @@ require_once 'php/data.php';
 // print_r($categoria);
 // print_r($produtos_base);
 // print '</pre>'
-
+if ($_SESSION['access'] == false) {
+    header("Location: Login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

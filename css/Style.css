@@ -260,7 +260,7 @@ input:hover{
 }
 .div-consulta2{
     position: absolute;
-    top: 90%;
+    top: 100%;
     left: 17%;
     width: 81%;
     height: 25%;
@@ -288,4 +288,28 @@ input:hover{
 }
 .text {
     text-align: center;
+}
+
+table {
+    width: 78%;
+    height: 40%;
+    top: 23%;
+    position: absolute;
+    margin-left: 115px;
+    border: #1e1e1e;
+}
+tr {
+    border: #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+    background-color: #f1f1f171;
+}
+/* Tabela do estoque */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 36%;
+    text-align: center;;
 }

@@ -1,5 +1,13 @@
 <?php
 include_once "php/init.php";
+if (isset($_GET['access']) && $_GET['access'] == 'true') {
+    $_SESSION['access'] = true;
+}
+elseif ($_SESSION['access'] == false) {
+    header("Location: Login.php");
+    exit();
+}
+// print_r($_SESSION['access']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,11 +22,66 @@ include_once "php/init.php";
 
     <?php require_once 'partial/header.php';?>
 
+    <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Situação</th>
+                    <th>tudo:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $subtudo = 0;
+                foreach ($_SESSION['produtos'] as $coisas) {
+                    $tudo = 0;
 
+                    $tudo = $coisas['Qtd'] * $coisas['preco'];
+                    $subtudo += $tudo;
 
-<!-- <?php
-print_r($_SESSION['produtos']);
-?> -->
+                     if ($coisas['Qtd'] == $limite_minimo) {
+                        $unidade = 'Quase Acabando ⚠';
+                    }elseif ($coisas['Qtd'] == 0) {
+                        $unidade = 'Sem Estoque ❌';
+                    } elseif ($coisas['Qtd'] > $limite_minimo) {
+                        $unidade = 'Tudo certo ✔';
+                    } elseif ($coisas['Qtd'] < 0) {
+                        $unidade = 'Quantidade em Falência ❌';
+                    } else {
+                        $unidade = 'Acabando ❌';
+                    }
+                    
+                    echo '
+                    <tr>
+                    <td class="centro">' . $coisas['id'] . '</td>
+                    <td>' . $coisas['nome'] . '</td>
+                    <td>' . $coisas['categoria'] . '</td>
+                    <td>' . $coisas['preco'] . '</td>
+                    <td class="centro">
+                    ' . $coisas['Qtd'] . '
+                    </td>
+                    <td>' . $unidade . '</td>
+                    <td>' . $tudo . '</td>  
+                    </tr>   
+                    ';
+                }
+                ?>
+            </tbody>
+            <tfoot>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Subtudo: </td>
+                <td><?php print $subtudo ?></td>
+            </tfoot>
+        </table>
 
 
 
