@@ -62,24 +62,40 @@ if (!currentUrl.includes(newWord)) {
             ?>
             
             <div class="div-consulta2">
-            <?php
-            echo '<div class="grid3">';
-            foreach($categoria as $kcat => $nome ) {
-            if($_GET['categoria'] == '' || $nome == $_GET['categoria']  ){
-            echo '<div>Categoria: '.$nome.'<br> Quantidade em estoque: '.  $produto['Qtd'] .'</div>';}
-        };
-            ?>  
+            <h2>Controle de Quantidades por Categoria</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($categoria as $kcat => $nome): ?>
+                
+                <tr>
+                    <td colspan="3" class="categoria-separador">
+                        <?= $kcat ?>
+                    </td>
+                </tr>
+
+                <?php foreach ($_SESSION['produtos'] as $produto): ?>
+                    <?php if ($produto['categoria'] === $nome): ?>
+                        <tr>
+                            <td><?= $produto['nome'] ?></td>
+                            <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
+                            <td><?= $produto['Qtd'] ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
+            <?php endforeach; ?>
+        </tbody>
+    </table> 
             </div>
     <script src="Script/Script.js">
-        function Warning(){
-    const Alert = document.getElementById('test')
-    const color = document.getElementById('1')
-    if(Alert <= 10){
-        color.style.color = 'red'
-    }
-    setInterval(Warning(),1000);
-}
-
     </script>
 </body>
 </html>

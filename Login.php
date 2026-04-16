@@ -1,6 +1,5 @@
 <?php include  'php/init.php'; 
 include 'php/data.php';
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,47 +14,41 @@ include 'php/data.php';
         <div class="big_box2">
         <h1>Bem-Vindo ao ConstruTech </h1> </div> 
         <p id="textoL" class="paragrafo1">Faça o login para acessar</p>
-        <form>
+        <form method="POST" >
             <label style="text-align: center;">Usuário: </label>
             <input style="text-align: center; border: 5px solid silver; border-radius: 200px ;" type="text" placeholder="User" autocomplete='off' name="user" id="username" maxlength="20" method="POST" /> <br>
             <label style="text-align: center;">Senha : </label>
-            <input style="text-align: center; border: 5px solid silver; border-radius: 200px ;" type="password" placeholder="Password" name="password" id="pass" maxlength="8" method="POST" /> <br>
-            </form>
+            <input style="text-align: center; border: 5px solid silver; border-radius: 200px ;" type="password" placeholder="Password" name="password" id="pass" maxlength="8" method="POST" /> <br> 
             <?php
-            echo '<button type="submit" class="button1" onclick="Confirmation()">Enter</button>';
+            echo '<button type="submit" class="button1">Enter</button>';
             ?>
+            </form>
     </div>
-    <script>
-    function Confirmation(){
-    const pass = document.getElementById("pass").value
-    const user = document.getElementById("username").value
-    const thing = <?php echo $try ?>;
-    const ale = document.getElementById("textoL");
+<?php
+$pass = $_POST['password'] ?? '';
+    $user = $_POST['user'] ?? '';
+    $thing = $complete;
 
-    if(pass == "" && user == ""){
-        ale.innerText = "No information entered!";
-        ale.style.color = "blue";
-        ale.style.fontWeight = 600;
+    if ($user === '' && $pass === '') {
+        echo "<span class='center1' style='color:blue; font-weight:600;'>No information entered!</span>";
     }
-    else if(pass == "" ||user =="" ){
-        ale.innerText = "Something is still missing!";
-        ale.style.color = "yellow";
-        ale.style.fontWeight = 600;
+    elseif ($user === '' || $pass === '') {
+        echo "<span class='center1' style='color:orange; font-weight:600;'>Something is still missing!</span>";
     }
-    else if(thing[user]&& thing [user] === pass ) {
-        ale.innerText = "Welcome " + user + "!";
-        ale.style.color = "green";
-        ale.style.fontWeight = 600;
-        window.location.href = "index.php?access=true";
+    elseif (isset($thing[$user]) && $thing[$user] === $pass) {
+
+        $_SESSION['access'] = true;
+        $_SESSION['Active'] = $user;
+
+        echo "<span class='center1' style='color:green; font-weight:600;'>Welcome $user!</span>";
+
+        // Redirect (like window.location.href)
+        header("Location: index.php");
+        exit;
     }
     else {
-        ale.innerText = "Wrong Password or user!";
-        ale.style.color = "red";
-        ale.style.fontWeight = 600;
+        echo "<span class='center1' style='color:red; font-weight:600;'>Wrong Password or user!</span>";
     }
-
-}
-</script>
-
+?>
     </body>
 </html>

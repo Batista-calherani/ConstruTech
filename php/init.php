@@ -19,8 +19,10 @@ if(!isset($_SESSION['pass'])) {
 if(!isset($_SESSION['access'])) {
     $_SESSION['access'] = $access;
 }
+if(!isset($_SESSION['Active'])) {
+    $_SESSION['Active'] = $Active;
+}
 $complete = array_combine($_SESSION['users'],$_SESSION['pass']);
-$try = json_encode($complete);
 $total = array_sum(array_column($_SESSION['produtos'] ,'Qtd',));
 
 $limite_minimo = 50;

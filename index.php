@@ -7,7 +7,9 @@ elseif ($_SESSION['access'] == false) {
     header("Location: Login.php");
     exit();
 }
-// print_r($_SESSION['access']);
+if (isset($_GET['Active'])){
+    print_r($_SESSION['Active']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

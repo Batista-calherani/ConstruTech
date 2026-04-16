@@ -47,4 +47,4 @@ $Produtos = [
 $users = ['Gustavo','Matheus'];
 $pass = ['54321','40028'];
 $access = false;
-
+$Active = null;

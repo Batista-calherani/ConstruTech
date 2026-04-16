@@ -13,7 +13,7 @@ img {
 body{    
     display: flex;
     justify-content: center;
-    background-color: rgb(212, 212, 212);
+    background-image: url(../img/estampa4.png);
 }
 /* Body e default da página */
 header{
@@ -27,7 +27,7 @@ header{
     align-items: center;
 }
 nav{
-    background-color: gray;
+    background-color: rgb(0, 0, 0);
     display: flex;
     width: 100%;
     height: 5rem;
@@ -43,7 +43,7 @@ nav{
     align-items: center;
 }
 .ultbar{
-    background-color:gray;
+    background-color:rgb(0, 0, 0);
     display: flex;
     width: 100%;
     border-top: 1px solid;
@@ -75,11 +75,12 @@ li{
     max-width: 14rem;
     width: 10%;
     min-width: 120px;
-    height: 80rem;
+    height: 95rem;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    background-color: gray;
+    background-color: rgb(0, 0, 0);
+    color: #f1f1f1;
 }
 a{
     text-decoration: none;
@@ -87,6 +88,25 @@ a{
 a:hover{
     text-decoration: underline;
     color: crimson;
+}
+.Login_img {
+    display: flex;
+    padding: 0.3rem 0.5rem;
+    border-radius: 1.5rem;
+    border: none;
+    transition: transform .2s ease-in-out;
+    background-color: #ffffff;
+    color: #606060;
+    font-family: "Cal sans", sans-serif;
+    font-size: 25px;
+    align-items: center;
+}
+.a {
+    width: 50px;
+    margin-bottom: 0;
+}
+.b {
+    color: #f1f1f1;
 }
 /* Header */
 .conteiner-login img{
@@ -188,13 +208,14 @@ input:hover{
     top: 20%;
     left: 17%;
     width: 81%;
-    background-color: #f1f1f1;
+    background-color: oklch(12.9% 0.042 264.695);
     display: grid;
     border: none;
     border-radius: 0.8rem;
     overflow: hidden;
     justify-items: center;
     transition: transform .3s ease-in-out;
+    color: #f1f1f1;
 }
 .col-apresent{
     position: static;
@@ -209,7 +230,6 @@ input:hover{
     position: static;
     font-size: clamp(3rem,6vw,6rem);
     font-family: fantasy;
-    color: #1e1e1e;
     left: 10%;
     margin-left: 1%;
     text-decoration: none;
@@ -238,6 +258,82 @@ input:hover{
 
 }
 /* Consulta produto */
+.tabela-main{
+    width: 82%;
+    height: auto;
+    margin-bottom: 3rem;
+}
+
+.conteiner_tabela{
+    margin: 1.5rem 0px;
+    width: 90%;
+    height: auto;
+}
+
+.titulo{
+    text-align: center;
+    font-size:  clamp(15px,3vw,30px);
+ }
+
+td,th{
+    padding: 16px;
+    padding: 16px 0px;
+    border: none;
+    text-align: center;
+    transition: transform .2s ease-in-out;
+}
+table{
+    position: absolute;
+    width: 78%;
+    height: 100%;
+    top: 23%;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 10px;   
+    overflow: hidden;
+    font-size: 20px;
+    background-color: oklch(12.9% 0.042 264.695);
+    transition: transform .2s ease-in-out;
+    left: 15%;
+}
+table:hover{
+    transform: scale(1.03);
+
+}
+th{
+    background-color: #1e1e1e;
+    font-family: "Zalando Sans Expanded",sans-serif;
+    font-size: 15px;
+    color:oklch(43.091% 0.16933 12.739);
+    padding: 20px 0;
+}
+.roxo{
+    background-color: #1e1e1e;
+    font-family:  "Cal sans",sans-serif;
+}
+td{
+    color: #d8d7d7;
+    font-family:"Open Sans",sans-serif;
+}
+/* Tabela do estoque */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 36%;
+    text-align: center;;
+}
+.center1 {
+    position: absolute;
+    top: 32%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    height: 1%;
+    text-align: center;;
+}
 .align-text{
     position: absolute;
     top: 20%;
@@ -260,17 +356,18 @@ input:hover{
 }
 .div-consulta2{
     position: absolute;
-    top: 100%;
+    top: 130%;
     left: 17%;
     width: 81%;
     height: 25%;
-    background-color: #f1f1f1;
+    background-color: oklch(12.9% 0.042 264.695);
     display: grid;
     border: none;
     border-radius: 0.8rem;
     overflow: hidden;
     justify-items: center;
     transition: transform .3s ease-in-out;
+    color: #f1f1f1;
 }
 .legend {
     font-size: 20px;
@@ -289,27 +386,25 @@ input:hover{
 .text {
     text-align: center;
 }
-
-table {
-    width: 78%;
-    height: 40%;
-    top: 23%;
+.div-consulta3{
     position: absolute;
-    margin-left: 115px;
-    border: #1e1e1e;
+    top: 100%;
+    left: 17%;
+    width: 81%;
+    height: 25%;
+    background-color: oklch(12.9% 0.042 264.695);
+    display: grid;
+    border: none;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    justify-items: center;
+    transition: transform .3s ease-in-out;
+    color: #f1f1f1;
 }
-tr {
-    border: #1e1e1e;
-    border-bottom: 1px solid #1e1e1e;
-    background-color: #f1f1f171;
-}
-/* Tabela do estoque */
-.center {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: 36%;
-    text-align: center;;
+.col-e{
+    background-color: #b0b0b0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

@@ -30,7 +30,7 @@ if ($_SESSION['access'] == false) {
 ?>
     </div>
 </main>
-<div class="div-consulta2"> 
+<div class="div-consulta3"> 
     <div class="text"> <p> Adicionar mais ao estoque </p> </div>
     <form action="" method="post" class="form-consulta2">
         <input type="hidden" name="id" value="<?php echo $id; ?>">

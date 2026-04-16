@@ -14,7 +14,11 @@ if ($_SESSION['access'] == true){
 <div class="conteiner">
 <header>
         <nav>
-            <h1>CONSTRUTECH</h1> 
+            <h1 class="b" >CONSTRUTECH</h1>
+            <div class="Login_img">
+            <img src="img/icon.png" class="a" >
+            <p> '.$_SESSION['Active'].'</p>
+            </div>
         </nav>
         <div class="ultbar">
          </div>
