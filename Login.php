@@ -23,6 +23,7 @@ include 'php/data.php';
             echo '<button type="submit" class="button1">Enter</button>';
             ?>
             </form>
+            <button class="button"><a href="cadastro2.php">Cadastre-se</button>
     </div>
 <?php
 $pass = $_POST['password'] ?? '';

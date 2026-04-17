@@ -60,11 +60,10 @@ if (!currentUrl.includes(newWord)) {
             
             echo '</div></div>';
             ?>
-            
-            <div class="div-consulta2">
+            <div class="div-consulta4">
             <h2>Controle de Quantidades por Categoria</h2>
 
-    <table>
+    <table class="table2" >
         <thead>
             <tr>
                 <th>Produto</th>
@@ -95,6 +94,7 @@ if (!currentUrl.includes(newWord)) {
         </tbody>
     </table> 
             </div>
+           <?php require_once 'partial/footer.php';?> 
     <script src="Script/Script.js">
     </script>
 </body>

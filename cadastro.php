@@ -1,64 +1,79 @@
-<?php include  'php/init.php'; ?>
+<?php
+require_once 'php/init.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    $deleteId = intval($_POST['delete_id']);
+    foreach ($_SESSION['produtos'] as $index => $produto) {
+        if ($produto['id'] === $deleteId) {
+            unset($_SESSION['produtos'][$index]);
+            $_SESSION['produtos'] = array_values($_SESSION['produtos']);
+            $message = 'Item removido com sucesso.';
+            break;
+        }
+    }
+};
+if ($_SESSION['access'] == false) {
+    header("Location: Login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php print $title; ?></title>
         <link rel="stylesheet" href="./css/Style.css"/>
         <link rel="icon" href="img/icon.jpg">
-
     </head>
 <body>
-<form action="" method='POST' >
-        <div class="conteiner-login">
-            <div class="conteiner-login">         
-                <div class="continer-texto">
-        
-                </div>
-                <div class="div-login">
-                    <div class="col-e">
-                        <h1>Bem vindo de Volta ! </h1>
-                        <p>Caso queira criar uma conta, clique no botão abaixo</p>
-                        <button ><a href="login.php">Login</a></button>
-                        <button ><a href="index.php">Voltar</a></button>
-                    </div>
-                    <div class="col-d">
-                        <div class="Pai">
-                    <h1 class="Modo" >Crie uma Conta</h1>
-                    <div class="logs">
-                        <div class="circulo">
-                            <img src="img/martelo.webp" id="a" draggable="false" >
-                        </div>
-                        <div class="circulo">
-                            <img src="img/cimento.png" id="b" draggable="false" >
-                            </div>
-                        <div class="circulo">
-                            <img src="img/torneira.webp" id="c" draggable="false" >
-                        </div>
-                    </div>
+<?php require_once 'partial/header.php'; ?>
+
+<div class="conteiner-login">
+    <div class="conteiner-login">
+        <div class="div-login">
+            <div class="col-d">
+                <div class="Pai">
+                    <h1 class="Modo">Excluir itens desnecessários</h1>
                     <div class="texto">
-                        <p>Faça sua conta mais rápido, usando suas contas acima e faça cadastro por elas</p>
+                        <p>Selecione o item que você não precisa mais e clique em excluir.</p>
                     </div>
-                    <div class="card">
-                        <input type="text" placeholder="Usuario" required autocomplete="off" name="usuario">
-                        <input type="password" placeholder="Senha" required minlength="5" maxlength="5" autocomplete="off" name="pass">
-                        <br>
-                        <button id="btn" type='submit' >Login</button>
-                        <p id="p">Preencha os campos do formulário</p>
-                    </div>
-                </div>
-                    </div>
+                    <?php if (!empty($message)): ?>
+                        <div class="card" style="border: 1px solid #4caf50; padding: 12px; margin-bottom: 16px; background: #e8f5e9; color: #2e7d32;">
+                            <?= htmlspecialchars($message) ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (empty($_SESSION['produtos'])): ?>
+                        <div class="card">
+                            <p>Não há itens no estoque para remover.</p>
+                        </div>
+                    <?php else: ?>
+                        <?php foreach ($_SESSION['produtos'] as $produto): ?>
+                            <div class="card" style="margin-bottom: 14px;">
+                                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                                    <img src="<?= htmlspecialchars($produto['imagem']) ?>" alt="<?= htmlspecialchars($produto['nome']) ?>" style="width: 100px; height: auto; border-radius: 8px;" />
+                                    <div style="flex: 1; min-width: 220px;">
+                                        <h2 style="margin: 0 0 8px;"><?= htmlspecialchars($produto['nome']) ?></h2>
+                                        <p style="margin: 0 0 6px;"><?= htmlspecialchars($produto['descricao_curta']) ?></p>
+                                        <p style="margin: 0 0 6px;">Categoria: <?= htmlspecialchars($produto['categoria']) ?></p>
+                                        <p style="margin: 0 0 6px;">Preço: R$ <?= htmlspecialchars($produto['preco']) ?></p>
+                                        <p style="margin: 0;">Quantidade: <?= htmlspecialchars($produto['Qtd']) ?></p>
+                                    </div>
+                                    <form action="" method="post" style="margin: 0;">
+                                        <input type="hidden" name="delete_id" value="<?= htmlspecialchars($produto['id']) ?>">
+                                        <button id="btn" type="submit">Excluir</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-</form>
+    </div>
+</div>
 
-<?php require_once 'partial/footer.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
-
-    $_SESSION['users'][] = $_POST['usuario'];
-    $_SESSION['pass'][] = $_POST['pass'];
-};
-
-?>
+<?php require_once 'partial/footer.php'; ?>
 </body>
 </html>

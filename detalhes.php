@@ -1,10 +1,33 @@
-<!DOCTYPE html> <?php include  'php/init.php';
-$id = isset($_GET['id']) ? (int) $_GET['id']: 0;
+<?php 
+include 'php/init.php';
+
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+
+// Security check
 if ($_SESSION['access'] == false) {
     header("Location: Login.php");
     exit();
 }
+
+// Handle the POST request BEFORE any HTML is output to the page
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $post_id = $_POST['id'];
+    $quantidade = $_POST['quantidade'];
+
+    foreach($_SESSION['produtos'] as &$produto) {
+        if ($produto['id'] == $post_id) {
+            $produto['Qtd'] += $quantidade;
+            break; // Stops the loop immediately after finding it
+        }
+    }
+    unset($produto); // Dereference the variable to avoid side effects
+    
+    // Redirects to the same page to update data
+    header('Location: detalhes.php?id=' . $post_id); 
+    exit(); // Always exit after a header redirect
+}
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -14,46 +37,38 @@ if ($_SESSION['access'] == false) {
     <title><?php print $title; ?></title>
 </head>
 <body>
-        <?php require_once 'partial/header.php'; 
-    echo'<main class="align-text">
-        <div class="big_box"> <h1>';
+    <?php require_once 'partial/header.php'; ?>
 
-        foreach($_SESSION['produtos'] as $produto )
-        
-        {if ($produto['id'] == $_GET['id']  ) {
-        echo' '.$produto['nome'].' <p> <br> '.$produto['descricao_curta'].'</p> <a href="consulta.php" class="move" > Voltar </a> </h1>
-        <img src="'.$produto['imagem'].'" class="i2" > <br>
-        <b class="nope" > Quantidade:</b><div class="legend2" >'.$produto['Qtd'].'</div> <h1 class="move" >'.$produto['categoria'].' <br> Preço: <R1>'.$produto['preco'].'</R1><br></h1>';
-        break; // Para o loop imediatamente após encontrar
-    };   
-};
-?>
-    </div>
-</main>
-<div class="div-consulta3"> 
-    <div class="text"> <p> Adicionar mais ao estoque </p> </div>
-    <form action="" method="post" class="form-consulta2">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <input type="number" name="quantidade" placeholder="Quantidade a adicionar" required>
-        <button type="submit">Adicionar</button>
-    </form>
-<?php 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
+    <main class="align-text">
+        <div class="big_box">
+            <h1>
+            <?php
+            foreach($_SESSION['produtos'] as $produto) {
+                if ($produto['id'] == $_GET['id']) {
+                    
+                    // 1. Display Product Details
+                    echo ' ' . $produto['nome'] . ' <p> <br> ' . $produto['descricao_curta'] . '</p> <a href="consulta.php" class="move" > Voltar </a> </h1>
+                    <img src="' . $produto['imagem'] . '" class="i2" > <br>
+                    <b class="nope" > Quantidade:</b><div class="legend2" >' . $produto['Qtd'] . '</div> <h1 class="move" >' . $produto['categoria'] . ' <br> Preço: <R1>' . $produto['preco'] . '</R1><br></h1>';
+                    
+                    // 2. Display the Form INSIDE the foreach match
+                    echo '
+                    <div class="div-consulta3">
+                        <div class="text"> <p> Adicionar mais ao estoque </p> </div>
+                        <form action="" method="post" class="form-consulta2">
+                            <input type="hidden" name="id" value="' . $id . '">
+                            <input type="number" name="quantidade" placeholder="Quantidade a adicionar" required>
+                            <button type="submit">Adicionar</button>
+                        </form>
+                    </div>';
 
-    $id = $_POST['id'];
-    $quantidade = $_POST['quantidade'];
+                    break; // Stops the loop immediately after finding it
+                }   
+            }
+            ?>
+        </div>
+    </main>
 
-    foreach($_SESSION['produtos'] as &$produto) {
-        if ($produto['id'] == $id) {
-            $produto['Qtd'] += $quantidade;
-            break; // Para o loop imediatamente após encontrar
-        }
-    }
-    unset($produto); // Desreferencia a variável para evitar efeitos colaterais
-    Header('Location: detalhes.php?id='.$id); // Redireciona para a mesma página para atualizar os dados
-}
-?>
- </div>
-<script src="Script/Script.js" >  </script>
+    <script src="Script/Script.js"></script>
 </body>
 </html>

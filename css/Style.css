@@ -10,11 +10,21 @@ img {
 .logo{
     width: 120px;
 }
-body{    
-    display: flex;
-    justify-content: center;
+body {    
     background-image: url(../img/estampa4.png);
+    
+    /* Add Flexbox to the body */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body is at least the height of the screen */
 }
+label {
+    color: #f1f1f1;
+}
+span {
+    font-size: 25px;
+}
+
 /* Body e default da página */
 header{
     display: flex;
@@ -35,12 +45,14 @@ nav{
     align-items: center;
 }
 .conteiner{
+        position: relative;
     display: flex;
     max-width: 126rem;
-    width: 90%;
+    width: 93% ;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+    left: 120px;
 }
 .ultbar{
     background-color:rgb(0, 0, 0);
@@ -57,6 +69,7 @@ h1{
     margin-top: 10px;
     font-size: 3rem;
     font-family: "open sans", sans-serif;
+    color: #f1f1f1;
 }
 ul{
     list-style: none;   
@@ -71,14 +84,12 @@ li{
     font-family: "open sans", sans-serif;
 }
 .leftbar{
-    display: flex;
+    position: absolute;
     max-width: 14rem;
     width: 10%;
     min-width: 120px;
-    height: 95rem;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
+    height: 150%;
+    min-height: 100dvh;
     background-color: rgb(0, 0, 0);
     color: #f1f1f1;
 }
@@ -204,10 +215,9 @@ input:hover{
     display: grid;
 }
 .div-consulta{
-    position: absolute;
-    top: 20%;
-    left: 17%;
-    width: 81%;
+    margin-left: 12%;
+    margin-bottom: 7%;
+    width: 87%;
     background-color: oklch(12.9% 0.042 264.695);
     display: grid;
     border: none;
@@ -233,6 +243,15 @@ input:hover{
     left: 10%;
     margin-left: 1%;
     text-decoration: none;
+}
+.paragrafo1{
+    position: static;
+    font-size: clamp(3rem,6vw,6rem);
+    font-family: fantasy;
+    left: 10%;
+    margin-left: 1%;
+    text-decoration: none;
+    color: #f1f1f1;
 }
 
 .col-apresent li {
@@ -283,18 +302,17 @@ td,th{
     transition: transform .2s ease-in-out;
 }
 table{
-    position: absolute;
+    margin-top: 10%;
+    margin-left: 15%;
     width: 78%;
     height: 100%;
-    top: 23%;
     border: none;
     border-collapse: collapse;
-    border-radius: 10px;   
+    border-radius: 10px;
     overflow: hidden;
     font-size: 20px;
     background-color: oklch(12.9% 0.042 264.695);
     transition: transform .2s ease-in-out;
-    left: 15%;
 }
 table:hover{
     transform: scale(1.03);
@@ -311,9 +329,25 @@ th{
     background-color: #1e1e1e;
     font-family:  "Cal sans",sans-serif;
 }
+.Modo {
+    color: #1e1e1e;
+}
 td{
     color: #d8d7d7;
     font-family:"Open Sans",sans-serif;
+}
+.table2{
+    margin-top: 0;
+    margin-left: 0;
+    width: 99%;
+    height: 100%;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 20px;
+    background-color: oklch(12.9% 0.042 264.695);
+    transition: transform .2s ease-in-out;
 }
 /* Tabela do estoque */
 .center {
@@ -327,7 +361,7 @@ td{
 }
 .center1 {
     position: absolute;
-    top: 32%;
+    top: 30%;
     left: 60%;
     transform: translate(-50%, -50%);
     width: 35%;
@@ -369,6 +403,18 @@ td{
     transition: transform .3s ease-in-out;
     color: #f1f1f1;
 }
+.div-consulta4{
+    margin-left: 12%;
+    width: 87%;
+    background-color: oklch(12.9% 0.042 264.695);
+    display: grid;
+    border: none;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    justify-items: center;
+    transition: transform .3s ease-in-out;
+    color: #f1f1f1;
+}
 .legend {
     font-size: 20px;
 }
@@ -387,12 +433,9 @@ td{
     text-align: center;
 }
 .div-consulta3{
-    position: absolute;
-    top: 100%;
-    left: 17%;
+    
     width: 81%;
-    height: 25%;
-    background-color: oklch(12.9% 0.042 264.695);
+    margin: auto;
     display: grid;
     border: none;
     border-radius: 0.8rem;
@@ -400,6 +443,7 @@ td{
     justify-items: center;
     transition: transform .3s ease-in-out;
     color: #f1f1f1;
+        background-color: oklch(0.34 0.13 24.98);
 }
 .col-e{
     background-color: #b0b0b0;
@@ -407,4 +451,57 @@ td{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+footer{
+    
+    width: 100%;
+    height: auto;
+    background-color:#1e1e1e;
+    color: white;
+    padding: 2rem;
+}
+
+.conteiner-footer{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 50px;
+}
+
+.col-interior h1{
+    font-family: "Cal sans",sans-serif;
+    font-size: clamp(20px,2vw,30px);
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+.col-interior p{
+    font-family: "Open sans",sans-serif;
+    font-size: clamp(8px,1vw,18px);
+}
+#redes-sociais{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+@media screen and (max-width: 720px){
+    .conteiner-footer{
+        grid-template-columns:repeat(3, 1fr) ;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .conteiner-footer{
+        grid-template-columns:repeat(2, 1fr) ;
+    }
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 2rem;
+    position: absolute;
+    top: 150%;
 }
