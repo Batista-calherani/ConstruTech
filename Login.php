@@ -10,6 +10,9 @@ include 'php/data.php';
     </head>
     <body class="body_login">
         <?php require_once 'partial/header.php'; ?>
+    <div class="cont-grind">
+    <?php require_once 'partial/leftbar.php'; ?>
+    <div class="conteiner">
     <div class="center">
         <div class="big_box2">
         <h1>Bem-Vindo ao ConstruTech </h1> </div> 
@@ -23,18 +26,19 @@ include 'php/data.php';
             echo '<button type="submit" class="button1">Enter</button>';
             ?>
             </form>
-            <button class="button"><a href="cadastro2.php">Cadastre-se</button>
     </div>
 <?php
-$pass = $_POST['password'] ?? '';
-    $user = $_POST['user'] ?? '';
+    if(isset($_POST['password']) && isset($_POST['user'])){
+    $pass = $_POST['password'];
+    $user = $_POST['user'];
     $thing = $complete;
 
     if ($user === '' && $pass === '') {
-        echo "<span class='center1' style='color:blue; font-weight:600;'>No information entered!</span>";
+        echo '<div class="card" style="border: 1px solid #c23f36; padding: 11px; border-radius: 1rem; margin-bottom: 10px; background: #ffffff; width: 500px;text-align: center ">
+        <span style="color:red; font-weight:300; font-size:large">No information entered!</span></div>';
     }
     elseif ($user === '' || $pass === '') {
-        echo "<span class='center1' style='color:orange; font-weight:600;'>Something is still missing!</span>";
+        echo '<div class="card" style="border: 1px solid #c23f36; padding: 11px; border-radius: 1rem; margin-bottom: 10px; background: #ffffff; width: 500px;text-align: center"><span class="center1" style="color:red; font-weight:300;font-size:large; ">Something is still missing!</span></div>';
     }
     elseif (isset($thing[$user]) && $thing[$user] === $pass) {
 
@@ -48,8 +52,10 @@ $pass = $_POST['password'] ?? '';
         exit;
     }
     else {
-        echo "<span class='center1' style='color:red; font-weight:600;'>Wrong Password or user!</span>";
-    }
+        echo '<div class="card" style="border: 1px solid #c23f36; padding: 11px; border-radius: 1rem; margin-bottom: 10px; background: #ffffff; width: 500px;text-align: center"><span class="center1" style="color:red; font-weight:300;font-size:large">Wrong Password or user!</span></div>';
+    }}
 ?>
+    </div>
+</div>
     </body>
 </html>

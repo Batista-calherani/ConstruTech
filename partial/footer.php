@@ -24,8 +24,16 @@
             </div>
             <div class="col-footer">
                 <div class="col-interior">
-                    <h1>Politica de Privacidade</h1>
-                    <p>É de suma importância que leia os Termos de Serviço e Políticas de Privacidade do site antes de interagir com qualquer produto presente aqui.</p>
+                    <?php
+                $subtudo = 0;
+                foreach ($_SESSION['produtos'] as $coisas) {
+                    $tudo = 0; 
+                    $tudo = $coisas['Qtd'] * $coisas['preco'];
+                    $subtudo += $tudo;
+                }
+                    echo '<H1>Subtudo: </H1>
+                <p> R$'. $subtudo .'</p>';   
+                    ?>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php print $title; ?></title>
+        <title><?php print $title;?></title>
         <link rel="stylesheet" href="./css/Style.css"/>
         <link rel="icon" href="img/icon.jpg">
 
