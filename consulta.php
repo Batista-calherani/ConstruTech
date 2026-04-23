@@ -29,12 +29,20 @@ if (!currentUrl.includes(newWord)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="icon" href="img/icon.jpg">
     <title><?php print $title; ?></title>
 </head>
 <body>
     <?php require_once 'partial/header.php';?>
-    <div class="div-consulta">
+
+    <div class="cont-grind">
+    <?php require_once 'partial/leftbar.php'; ?>
+    <div class="conteiner">
+
+    <div class="cont-consulta">
         <?php 
         print ' <p class="paragrafo"> Catálogo </p>
         <ul class="col-apresent">';
@@ -49,7 +57,7 @@ if (!currentUrl.includes(newWord)) {
         echo '</ul>';
 ?>
         
-        <p class="paragrafo"> Estoque, e Muito Mais!! </p>
+        <p class="paragrafo"></p>
             <?php
             echo '<div class="grid2">';
             foreach($_SESSION['produtos'] as $produto){
@@ -60,40 +68,11 @@ if (!currentUrl.includes(newWord)) {
             
             echo '</div></div>';
             ?>
-            <div class="div-consulta4">
-            <h2>Controle de Quantidades por Categoria</h2>
+            
 
-    <table class="table2" >
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($categoria as $kcat => $nome): ?>
-                
-                <tr>
-                    <td colspan="3" class="categoria-separador">
-                        <?= $kcat ?>
-                    </td>
-                </tr>
+    </div>
+    </div>
 
-                <?php foreach ($_SESSION['produtos'] as $produto): ?>
-                    <?php if ($produto['categoria'] === $nome): ?>
-                        <tr>
-                            <td><?= $produto['nome'] ?></td>
-                            <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
-                            <td><?= $produto['Qtd'] ?></td>
-                        </tr>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-
-            <?php endforeach; ?>
-        </tbody>
-    </table> 
-            </div>
            <?php require_once 'partial/footer.php';?> 
     <script src="Script/Script.js">
     </script>

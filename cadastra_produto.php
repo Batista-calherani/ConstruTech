@@ -14,7 +14,13 @@ if ($_SESSION['access'] == false) {
     <title><?php print $title; ?></title>
 </head>
 <body>
+
 <?php require_once 'partial/header.php'; ?>
+
+<div class="cont-grind">
+<?php require_once 'partial/leftbar.php'; ?>
+<div class="conteiner">
+    
 <form action="" method="POST" class="div" >
         <div class="conteiner-login">
             <div class="conteiner-login">         
@@ -54,7 +60,8 @@ if ($_SESSION['access'] == false) {
             </div>
         </div>
 </form>
-
+</div>
+</div>
 
 <?php require_once 'partial/footer.php';
 

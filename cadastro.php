@@ -28,6 +28,9 @@ if ($_SESSION['access'] == false) {
     </head>
 <body>
 <?php require_once 'partial/header.php'; ?>
+<div class="cont-grind">
+<?php require_once 'partial/leftbar.php'; ?>
+<div class="conteiner">
 
 <div class="conteiner-login">
     <div class="conteiner-login">
@@ -72,6 +75,8 @@ if ($_SESSION['access'] == false) {
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <?php require_once 'partial/footer.php'; ?>

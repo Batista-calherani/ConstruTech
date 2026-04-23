@@ -24,6 +24,10 @@ if (isset($_GET['Active'])){
 
     <?php require_once 'partial/header.php';?>
 
+    <div class="cont-grind">
+    <?php require_once 'partial/leftbar.php'; ?>
+    <div class="conteiner">
+
     <table>
             <thead>
                 <tr>
@@ -34,6 +38,7 @@ if (isset($_GET['Active'])){
                     <th>Quantidade</th>
                     <th>Situação</th>
                     <th>tudo:</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -84,6 +89,8 @@ if (isset($_GET['Active'])){
                 <td><?php print $subtudo ?></td>
             </tfoot>
         </table>
+    </div>
+    </div>
 
 
 
