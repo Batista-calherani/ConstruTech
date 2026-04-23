@@ -83,12 +83,20 @@ h1{
 .Title-prod{
     font-family: "Open sans",sans-serif;
     font-size: 25px;
-    color: #f1f1f1;
+    color: #1e1e1e;
 }
 .move{
     font-family: "Open sans",sans-serif;
     color: #f1f1f1;
+    width: 4rem;
+    height: 1.5rem;
     font-size: 20px;
+    background-color: #1e1e1e;
+    border-radius: 0.3rem;
+}
+.move:hover{
+    transform: translateY(-8px);
+    transition: transform .1s
 }
 ul{
     list-style: none;   
@@ -123,8 +131,7 @@ a{
     text-decoration: none;
 }
 a:hover{
-    text-decoration: underline;
-    color: crimson;
+    background-color: crimson;
 }
 .Login_img {
     display: flex;
@@ -389,7 +396,7 @@ td{
 .uni{
     display:flex;
 }
-.big_box {
+.manager_box {
     display: flex;
     background-color: grey;
     text-align: center;

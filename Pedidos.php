@@ -6,13 +6,73 @@ if ($_SESSION['access'] == false) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
+    <link rel="stylesheet"  href="./css/Style.css">
+    <link rel="icon" href="img/icon.jpg">
+    <title><?php print $title;?></title>
 </head>
 <body>
+
+    <?php require_once 'partial/header.php';?>
+
+    <div class="cont-grind">
+    <?php require_once 'partial/leftbar.php'; ?>
+    <div class="conteiner">
+
+    <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Descricao</th>
+                    <th>Quantidade</th>
+                    <th>Produto</th>
+                    <th>Contato</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $subtudo = 0;
+                foreach ($_SESSION['pedidos'] as $coisas) {
+                    $tudo = 0;
+
+                    $tudo = $coisas['Quantidade']       ;
+                    $subtudo += $tudo;
+                    echo '
+                    <tr>
+                    <td class="centro">' . $coisas['id'] . '</td>
+                    <td>' . $coisas['nome'] . '</td>
+                    <td>' . $coisas['categoria'] . '</td>
+                    <td>' . $coisas['Descricao'] . '</td>
+                    <td class="centro">
+                    ' . $coisas['Quantidade'] . '
+                    </td> <td>' . $coisas['produto'] . '</td>
+                    <td>' . $coisas['telefone'] . '</td> 
+                    <td><a href="?action=aumentar&id=' . $coisas['id'] . '" title="Aumentar"><strong>+</strong></a>' . $coisas['status'] . '<a href="?action=diminuir&id=' . $coisas['id'] . '" title="Diminuir"><strong>-</strong></a></td>
+                    </tr>   
+                    ';
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+
+
+
+    <?php require_once 'partial/footer.php';
+    if (isset($_GET['action']) && isset($_GET['id'])) {
+    $action = $_GET['action'];
+    $id     = $_GET['id'];
     
+}
+    ?>
+    <script src="Script/Script.js"></script>
 </body>
 </html>

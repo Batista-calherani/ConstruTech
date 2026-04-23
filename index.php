@@ -37,7 +37,7 @@ if (isset($_GET['Active'])){
                     <th>Preço</th>
                     <th>Quantidade</th>
                     <th>Situação</th>
-                    <th>tudo:</th>
+                    <th>Total:</th>
                     <th></th>
                 </tr>
             </thead>

@@ -7,6 +7,7 @@ if ($_SESSION['access'] == true){
         <li><a href="consulta.php">Consultar Estoque</a></li>
         <li><a href="Pedidos.php">Manejar Pedidos</a></li>
         <li><a href="Excluir_item.php">Remoção</a></li>
+        <li><a href="Cadastra_pedido.php">Salvar pedido</a></li>
     </ul>
 </div>';
 }
@@ -19,6 +20,7 @@ else {
         <li><a href="Pedidos.php">Manejar Pedidos</a></li>
         <li><a href="Login.php">Login</a></li>
         <li><a href="Excluir_item.php">Remoção</a></li>
+        <li><a href="Cadastra_pedido.php">Salvar pedido</a></li>
     </ul>
     </div>';
 }

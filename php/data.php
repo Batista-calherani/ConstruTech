@@ -48,3 +48,22 @@ $users = ['Gustavo','Matheus'];
 $pass = ['54321','40028'];
 $access = false;
 $Active = null;
+
+$categoria = [
+    'Pendente' => 'Pendente',
+    'Aguardando' => 'Aguardando',
+    'Concluido' => 'Concluido'
+];
+
+$Pedidos=[
+    [
+        'id' => 1,
+        'nome' => 'Jorge',
+        'categoria' => 'Ferramentas',
+        'produto' => 'Martelo',
+        'Descricao' => 'Quero alguns martelos para minha reforma.',
+        'Quantidade' => 4,
+        'telefone' => '(11) 9947283-12',
+        'status' => 'Pendente'
+    ]
+];

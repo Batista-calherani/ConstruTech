@@ -7,7 +7,9 @@ require_once "data.php";
 if(!isset($_SESSION['produtos'])) {
     $_SESSION['produtos'] = $Produtos;
 };
-
+if(!isset($_SESSION['pedidos'])) {
+    $_SESSION['pedidos'] = $Pedidos;
+};
 
 if(!isset($_SESSION['users'])) {
     $_SESSION['users'] = $users;

@@ -44,15 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="conteiner">
 
     <main class="align-text">
-        <div class="big_box">
+        <div class="manager_box">
             <?php
             foreach($_SESSION['produtos'] as $produto) {
                 if ($produto['id'] == $_GET['id']) {
                     
                     // 1. Display Product Details
-                    echo ' <h1> ' . $produto['nome'] . ' <p class="Title-prod"> ' . $produto['descricao_curta'] . ' </h1> <br> </p> <a href="consulta.php" class="move" > Voltar </a>
+                    echo ' <h1 class="Title-manager"> ' . $produto['nome'] . ' <p class="Title-prod"> ' . $produto['descricao_curta'] . ' </p> </h1> <br>  <a href="consulta.php" class="move" > Voltar </a>
                     <img src="' . $produto['imagem'] . '" class="i2" > <br>
-                    <b class="nope" > Quantidade:</b><div class="legend2" >' . $produto['Qtd'] . '</div> <h1 class="move" >' . $produto['categoria'] . ' <br> Preço: <R1>' . $produto['preco'] . '</R1><br></h1>';
+                    <div class="Title-prod"><b class="nope" > Quantidade: </b><div class="legend2"> ' . $produto['Qtd'] . ' </div></div> ';
                     
                     // 2. Display the Form INSIDE the foreach match
                     echo '

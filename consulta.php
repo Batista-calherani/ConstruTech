@@ -62,7 +62,7 @@ if (!currentUrl.includes(newWord)) {
             echo '<div class="grid2">';
             foreach($_SESSION['produtos'] as $produto){
                 if($_GET['categoria'] == '' || $produto['categoria'] == $_GET['categoria']  ){
-                echo '<div class="item" id="1" ><img src="'.$produto['imagem'].'" class="img" id="produtos"><p class="legend" >'.$produto['nome'].' <br> Preço: <R1>'.$produto['preco'].' </R1> <br> Categoria: '.$produto['categoria'].'<br> Quantidade em estoque: '.$produto['Qtd'].' <button class="button"onclick=pagina('.$produto['id'].')>Ajustar Qntd</button></p></div>';
+                echo '<div class="item" id="1" ><img src="'.$produto['imagem'].'" class="img" id="produtos"><p class="legend" >'.$produto['nome'].' <br> Preço: <R1>'.$produto['preco'].' </R1> <br> Categoria: '.$produto['categoria'].'<br> Quantidade em estoque: '.$produto['Qtd'].' <button class="button"onclick=pagina('.$produto['id'].')>Ajustar</button></p></div>';
             }
             };
             
