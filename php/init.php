@@ -24,6 +24,7 @@ if(!isset($_SESSION['access'])) {
 if(!isset($_SESSION['Active'])) {
     $_SESSION['Active'] = $Active;
 }
+
 $complete = array_combine($_SESSION['users'],$_SESSION['pass']);
 $total = array_sum(array_column($_SESSION['produtos'] ,'Qtd',));
 

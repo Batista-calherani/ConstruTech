@@ -40,18 +40,12 @@ if ($_SESSION['access'] == false) {
                         </div>
                     </div>
                     <div class="card">
+                        <input type="hidden" name="Pendente" required id="nome" value="Pendente" >
                         <input type="text" placeholder="Nome" name="nome" required autocomplete="off" id="nome">
                         <input type="text" placeholder="Telefone" name="telefone" required autocomplete="off" id="preco">
-                        <select name="categoria" id="categoria">
-                            <option>Bruto</option>
-                            <option>Ferramentas</option>
-                            <option>Acabamento</option>
-                        </select>
-                        <select name="Status" id="Status">
-                            <option>Pendente</option>
-                            <option>Aguardando</option>
-                            <option>Concluido</option>
-                        </select>
+                        <input type="checkbox" name="categoria[]" value="Bruto"> Bruto
+                        <input type="checkbox" name="categoria[]" value="Ferramenta"> Ferramenta
+                        <input type="checkbox" name="categoria[]" value="Acabamento"> Acabamento
                         <input type="text" placeholder="descrição curta" name="descricao" required autocomplete="off" id="descricao">
                         <input type="text" placeholder="Produto" name="Produto" required autocomplete="off" id="preco">
                         <input type="number" placeholder="Quantidade" name="Qntd" required id="Qntd">
@@ -84,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ){
         'Descricao' => $_POST['descricao'],
         'Quantidade' => $_POST['Qntd'] ?? '',
         'telefone' => $_POST['telefone'],
-        'status' => $_POST['Status']
+        'status' => $_POST['Pendente'] ?? 'Pendente'
         
 ];
 };

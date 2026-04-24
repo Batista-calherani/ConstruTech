@@ -55,11 +55,12 @@ $categoria = [
     'Concluido' => 'Concluido'
 ];
 
+
 $Pedidos=[
     [
         'id' => 1,
         'nome' => 'Jorge',
-        'categoria' => 'Ferramentas',
+        'categoria' => ['Ferramentas'],
         'produto' => 'Martelo',
         'Descricao' => 'Quero alguns martelos para minha reforma.',
         'Quantidade' => 4,
