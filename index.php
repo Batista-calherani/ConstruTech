@@ -67,12 +67,12 @@ if (isset($_GET['Active'])){
                     <td class="centro">' . $coisas['id'] . '</td>
                     <td>' . $coisas['nome'] . '</td>
                     <td>' . $coisas['categoria'] . '</td>
-                    <td>' . $coisas['preco'] . '</td>
+                    <td>' . round($coisas['preco'],2) . '</td>
                     <td class="centro">
                     ' . $coisas['Qtd'] . '
                     </td>
                     <td>' . $unidade . '</td>
-                    <td>' . $tudo . '</td>  
+                    <td>' . round($tudo,2) . '</td>  
                     </tr>   
                     ';
                 }
@@ -86,7 +86,7 @@ if (isset($_GET['Active'])){
                 <td></td>
                 <td></td>
                 <td>Subtudo: </td>
-                <td><?php print $subtudo ?></td>
+                <td><?php print round($subtudo,2) ?></td>
             </tfoot>
         </table>
     </div>

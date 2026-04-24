@@ -49,12 +49,6 @@ $pass = ['54321','40028'];
 $access = false;
 $Active = null;
 
-$categoria = [
-    'Pendente' => 'Pendente',
-    'Aguardando' => 'Aguardando',
-    'Concluido' => 'Concluido'
-];
-
 
 $Pedidos=[
     [

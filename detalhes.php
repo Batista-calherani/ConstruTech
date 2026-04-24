@@ -13,10 +13,11 @@ if ($_SESSION['access'] == false) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $post_id = $_POST['id'];
     $quantidade = $_POST['quantidade'];
-
+    $preco = $_POST['preco'];
     foreach($_SESSION['produtos'] as &$produto) {
         if ($produto['id'] == $post_id) {
             $produto['Qtd'] += $quantidade;
+            $produto['preco'] += $preco;
             break; // Stops the loop immediately after finding it
         }
     }
@@ -52,19 +53,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // 1. Display Product Details
                     echo ' <h1 class="Title-manager"> ' . $produto['nome'] . ' <p class="Title-prod"> ' . $produto['descricao_curta'] . ' </p> </h1> <br>  <a href="consulta.php" class="move" > Voltar </a>
                     <img src="' . $produto['imagem'] . '" class="i2" > <br>
-                    <div class="Title-prod"><b class="nope" > Quantidade: </b><div class="legend2"> ' . $produto['Qtd'] . ' </div></div> ';
+                    <div class="Title-prod"><b class="nope" > Quantidade: </b>' . $produto['Qtd'] . '<div class="legend2">  <b class="nope" > Preço: </b> ' . round($produto['preco'],2) . ' </div></div> ';
                     
                     // 2. Display the Form INSIDE the foreach match
                     echo '
                     <div class="div-consulta3">
-                        <div class="text"> <p> Adicionar mais ao estoque </p> </div>
+                        <div class="text"> <p> Alterações </p> </div>
                         <form action="" method="post" class="form-consulta2">
                             <input type="hidden" name="id" value="' . $id . '">
                             <input type="number" name="quantidade" placeholder="Quantidade a adicionar" required>
-                            <button type="submit">Adicionar</button>
+                            <input type="number" name="preco" placeholder="Preço Ex. 10.00" step="any" required>
+                            <button type="submit">Adicionar</button> <br>
+                            <p>*Ps: Se for mudar somente uma opção deixar a outra com 0 </p>    
                         </form>
                     </div>';
-
                     break; // Stops the loop immediately after finding it
                 }   
             }

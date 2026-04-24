@@ -60,7 +60,7 @@ if ($_SESSION['access'] == false) {
                                         <h2 style="margin: 0 0 8px;"><?= htmlspecialchars($produto['nome']) ?></h2>
                                         <p style="margin: 0 0 6px;"><?= htmlspecialchars($produto['descricao_curta']) ?></p>
                                         <p style="margin: 0 0 6px;">Categoria: <?= htmlspecialchars($produto['categoria']) ?></p>
-                                        <p style="margin: 0 0 6px;">Preço: R$ <?= htmlspecialchars($produto['preco']) ?></p>
+                                        <p style="margin: 0 0 6px;">Preço: R$ <?= round(htmlspecialchars($produto['preco']),2) ?></p>
                                         <p style="margin: 0;">Quantidade: <?= htmlspecialchars($produto['Qtd']) ?></p>
                                     </div>
                                     <form action="" method="post" style="margin: 0;">
